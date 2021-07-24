@@ -1,0 +1,19 @@
+{
+  "name": "crypto-data",
+  "version": "1.0.0",
+  "description": "[ ] Print prices from two exchanges [ ] Save prices to exchange list [ ] Compare lists",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msbrewer/crypto-data.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msbrewer/crypto-data/issues"
+  },
+  "homepage": "https://github.com/msbrewer/crypto-data#readme"
+}
