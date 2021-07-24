@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/msbrewer/crypto-data/issues"
   },
-  "homepage": "https://github.com/msbrewer/crypto-data#readme"
+  "homepage": "https://github.com/msbrewer/crypto-data#readme",
+  "dependencies": {
+    "ccxt": "^1.53.61"
+  }
 }
