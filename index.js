@@ -2,8 +2,13 @@ const ccxt = require ('ccxt');
 
 (async function () {
     let kraken = new ccxt.kraken ()
-})
 
-console.log (kraken.id, await kraken.laodMarkers ())
-
-();
+let markets = (await kraken.fetchTickers(symbols = undefined, params = {}))
+    let krakenList = []
+    for (item in markets) {
+        krakenList.push(markets[String(item)].symbol + " : " + ((markets[String(item)].bid + markets[String(item)].ask)/2))
+    }
+    for (let i = 0; i < krakenList.length; i++) {
+        console.log(krakenList[i])
+    }
+}) ();
