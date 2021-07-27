@@ -1,18 +1,70 @@
 const ccxt = require ('ccxt');
 
-const krakenPrices = (async function () {
-    let kraken = new ccxt.kraken ()
+/*
+    {
+        "XBTUSD" : {
+            "kraken" : {
+                "ask" : 00,
+                "bid" : 00
+            }
+            "ascendex" {
+                "ask" : 00.
+                "bid" : 00
+            }
+            ...
+        }
+        "ETHUSD" : {
+            "kraken" : {
+                "ask" : 00,
+                "bid" : 00
+            }
+            "ascendex" : [
+                "ask" : 00,
+                "bid" : 00
+            ]
+            ...
+        }
+        ...
+    }
+*/
 
-    let markets = (await kraken.fetchTickers(symbols = undefined, params = {}))
-        let krakenList = []
-        for (item in markets) {
-            krakenList.push(markets[String(item)].symbol + " : " + ((markets[String(item)].bid + markets[String(item)].ask)/2))
+
+
+const exchangesList = [
+    "kraken"
+]
+console.log(exchangesList[0])
+
+const exchangeFuncs = {
+    "kraken" : new ccxt.kraken()
+}
+
+function dataPull(exchangesList, exchangeFuncs, i) {
+    let exchangeName = exchangesList[i]
+    let exchangeFunc = exchangeFuncs[exchangeName]
+    let exchangeInfo = exchangeFunc.fetchTickers(symbols = undefined, params = {})            
+}
+
+function dataWrite(item, i){
+    return {
+        "ask": item.ask,   
+        "bid": item.bid
+    }
+}
+
+
+
+let markets = {}
+for (let i = 0; i < exchangesList.length; i++)  {
+    for (item in dataPull(exchangesList, exchangeFuncs, i)) {
+        markets = {
+            item.symbol : {
+                exchangesList[i] : dataWrite(item, i)
+            }
         }
-        for (let i = 0; i < krakenList.length; i++) {
-            console.log(krakenList[i])
-        }
-}) ();
+    }
+}
 
 module.exports = {
-    krakenPrices,
+    markets,
 }
